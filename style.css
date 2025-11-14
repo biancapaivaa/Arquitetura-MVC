@@ -1,0 +1,230 @@
+/* style.css
+   Tema: rosa, divertido e intuitivo
+   Compatível com a estrutura:
+   - #form-produto
+   - #lista-produtos
+   - inputs: #nome, #preco
+*/
+
+/* Fonte moderna e amigável */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+:root{
+  --bg-1: #fff0f6;
+  --bg-2: #ffe6f2;
+  --card: #ffffff;
+  --accent: #ff6fb5; /* rosa vibrante */
+  --accent-2: #ff9acb; /* rosa claro */
+  --muted: #9b6b7b;
+  --success: #6fe6a8;
+  --shadow: 0 6px 18px rgba(255,107,181,0.12);
+  --glass: rgba(255,255,255,0.6);
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+html,body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Quicksand', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  color: #422034;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Layout centralizado */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+/* Card principal */
+.container {
+  width: 100%;
+  max-width: 880px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.84));
+  border-radius: calc(var(--radius) + 6px);
+  box-shadow: var(--shadow);
+  padding: 28px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
+/* Header */
+h1 {
+  margin: 0 0 14px 0;
+  font-size: 28px;
+  letter-spacing: -0.4px;
+  color: #3a1028;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+h1::before{
+  font-size: 26px;
+  transform: translateY(-1px);
+}
+
+/* Form styling */
+form#form-produto {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+/* Inputs */
+form input[type="text"],
+form input[type="number"]{
+  flex: 1 1 220px;
+  min-width: 160px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(66,32,52,0.06);
+  background: linear-gradient(180deg, #fff, rgba(255,250,252,0.9));
+  box-shadow: 0 4px 10px rgba(66,32,52,0.04);
+  font-size: 15px;
+  outline: none;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+/* Placeholder */
+form input::placeholder {
+  color: #c27a9a;
+  opacity: 0.9;
+}
+
+/* Input focus */
+form input:focus {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 10px 22px rgba(255,107,181,0.12);
+}
+
+/* Button */
+form button {
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255,107,181,0.18);
+  transition: transform .12s ease, box-shadow .12s ease;
+  flex: 0 0 auto;
+}
+
+/* Button hover/active */
+form button:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(255,107,181,0.22); }
+form button:active { transform: translateY(-1px); }
+
+/* Sub-heading */
+h2 {
+  font-size: 18px;
+  color: #422034;
+  margin: 14px 0;
+  font-weight: 600;
+}
+
+/* Lista de produtos em grid */
+#lista-produtos {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Item */
+#lista-produtos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  background: linear-gradient(180deg, var(--card), rgba(255,255,255,0.9));
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(66,32,52,0.04);
+  border-left: 6px solid rgba(255,154,203,0.28);
+  transition: transform .14s ease, box-shadow .14s ease;
+  gap: 8px;
+}
+
+/* Hover no item */
+#lista-produtos li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(66,32,52,0.06);
+}
+
+/* Nome e preço estilos */
+.prod-nome {
+  font-weight: 600;
+  color: #3a1028;
+  font-size: 15px;
+}
+.prod-preco {
+  font-weight: 700;
+  background: linear-gradient(90deg, rgba(255,111,181,0.12), rgba(255,154,203,0.06));
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #8b2640;
+  font-size: 14px;
+  min-width: 72px;
+  text-align: center;
+}
+
+/* Ações: editar / excluir */
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-left: 12px;
+}
+
+.btn-ghost {
+  background: var(--glass);
+  border: 1px dashed rgba(66,32,52,0.06);
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 36px;
+  text-align: center;
+  transition: transform .12s ease;
+}
+.btn-ghost:hover { transform: translateY(-3px); }
+
+/* botão excluir cor */
+.btn-delete { color: #b22e5a; border-color: rgba(178,46,90,0.06); }
+
+/* responsividade */
+@media (max-width: 600px) {
+  .container { padding: 18px; border-radius: 14px; }
+  form { gap: 8px; }
+  form input { font-size: 14px; padding: 10px; }
+  h1 { font-size: 22px; }
+  #lista-produtos { grid-template-columns: 1fr; }
+}
+
+/* Pequena animação de entrada */
+@keyframes floatIn {
+  from { transform: translateY(10px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+#lista-produtos li { animation: floatIn .45s ease both; }
+
+/* Mensagem quando não há itens */
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,250,252,0.6));
+  border: 1px dashed rgba(66,32,52,0.04);
+  margin-top: 8px;
+  font-weight: 600;
+}
